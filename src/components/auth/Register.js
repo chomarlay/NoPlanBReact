@@ -6,12 +6,12 @@ import {
   SubmitButton,
 } from '../../GlobalStyles';
 
-const onSubmit = (e) => {
-  e.preventDefault();
-  console.log('Please enter all fields.', 'danger');
-};
-
-const Register = () => {
+const Register = (props) => {
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log('Please enter all fields.', 'danger');
+    props.history.push('/today');
+  };
   return (
     <FormContainer>
       <StyledH1>Account Register</StyledH1>
