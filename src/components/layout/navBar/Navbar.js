@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { useContext, Fragment } from 'react';
 import { Nav, NavTitle, NavLink } from './NavStyledComponents/NavStyled';
 import { SideMenu } from './SideMenu';
+import AuthContext from './../../../context/auth/authContext';
 
 const GuestLinks = () => {
   return (
@@ -18,14 +19,19 @@ const AuthLinks = () => {
   );
 };
 const Navbar = () => {
+  const { isAuthenticated } = useContext(AuthContext);
   return (
     <Nav>
-      <div>
-        <SideMenu />
-      </div>
+      {isAuthenticated ? (
+        <div>
+          <SideMenu />
+        </div>
+      ) : (
+        ''
+      )}
+
       <NavTitle>NoPlanB</NavTitle>
-      <GuestLinks />
-      <AuthLinks />
+      {!isAuthenticated ? <GuestLinks /> : <AuthLinks />}
     </Nav>
   );
 };

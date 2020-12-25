@@ -10,25 +10,28 @@ import Navbar from './components/layout/navBar/Navbar';
 import GlobalStyle from './GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import { believeTheme } from './themes';
+import AuthState from './context/auth/AuthState';
 
 const App = () => {
   return (
-    <Router>
-      <ThemeProvider theme={believeTheme}>
-        <Fragment>
-          <GlobalStyle />
-          <Navbar />
-          <Switch>
-            <Route exact path='/about' component={About} />
-            <Route exact path='/register' component={Register} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/today' component={Today} />
-            <Route exact path='/upcoming' component={Upcoming} />
-            <Route exact path='/noplanb' component={Noplanb} />
-          </Switch>
-        </Fragment>
-      </ThemeProvider>
-    </Router>
+    <AuthState>
+      <Router>
+        <ThemeProvider theme={believeTheme}>
+          <Fragment>
+            <GlobalStyle />
+            <Navbar />
+            <Switch>
+              <Route exact path='/about' component={About} />
+              <Route exact path='/register' component={Register} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/today' component={Today} />
+              <Route exact path='/upcoming' component={Upcoming} />
+              <Route exact path='/noplanb' component={Noplanb} />
+            </Switch>
+          </Fragment>
+        </ThemeProvider>
+      </Router>
+    </AuthState>
   );
 };
 

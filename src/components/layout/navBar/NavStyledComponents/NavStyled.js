@@ -25,8 +25,9 @@ export const SideNav = styled.nav`
   position: absolute;
   left: 0;
   /* z-index: -1; */
-  padding-left: 30px;
+  padding-left: 10px;
   padding-right: 30px;
+  padding-top: 20px;
 `;
 export const NavTitle = styled.h1`
   font-size: 1.5rem;
