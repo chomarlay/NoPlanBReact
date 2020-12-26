@@ -1,16 +1,34 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import AuthContext from './authContext';
+import authReducer from './authReducer';
+import {
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  LOGOUT,
+  USER_LOADED,
+  AUTH_ERROR,
+} from './AuthTypes';
 
 const AuthState = (props) => {
   const initialState = {
     isAuthenticated: false,
-    user: '',
+    user: null,
   };
 
-  const [state, setState] = useState(initialState);
+  const [state, dispatch] = useReducer(authReducer, initialState);
 
-  const login = (loginUser) => {
-    setState({ ...state, isAuthenticated: true, user: loginUser });
+  // Login
+  const login = (formData) => {
+    // TODO - Call backend API
+    dispatch({ type: LOGIN_SUCCESS, payload: formData });
+  };
+
+  // Register
+  const register = (formData) => {
+    // TODO - Call backend API
+    dispatch({ type: REGISTER_SUCCESS, payload: formData });
   };
 
   return (
@@ -19,6 +37,7 @@ const AuthState = (props) => {
         isAuthenticated: state.isAuthenticated,
         user: state.user,
         login,
+        register,
       }}
     >
       {props.children}

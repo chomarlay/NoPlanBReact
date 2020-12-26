@@ -19,7 +19,7 @@ const Login = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    login(email);
+    login({ email, password });
     props.history.push('/today');
   };
 

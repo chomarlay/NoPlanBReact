@@ -7,7 +7,9 @@ const Today = () => {
 
   return (
     <Container>
-      <Title>Today tasks for {user}</Title>
+      <Title>
+        Today tasks for {user.email} - {user.password}
+      </Title>
     </Container>
   );
 };
