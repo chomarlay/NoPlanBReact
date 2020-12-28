@@ -4,11 +4,12 @@ import AuthContext from '../../context/auth/authContext';
 
 const Today = () => {
   const { user } = useContext(AuthContext);
+  const { email, password } = user;
 
   return (
     <Container>
       <Title>
-        Today tasks for {user.email} - {user.password}
+        Today tasks for {email} - {password}{' '}
       </Title>
     </Container>
   );
