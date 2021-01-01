@@ -7,6 +7,7 @@ import Noplanb from './components/pages/Noplanb';
 import Upcoming from './components/pages/Upcoming';
 import Register from './components/auth/Register';
 import Navbar from './components/layout/navBar/Navbar';
+import PrivateRoute from './components/routing/PrivateRoute';
 import GlobalStyle from './GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import { believeTheme } from './themes';
@@ -21,12 +22,13 @@ const App = () => {
             <GlobalStyle />
             <Navbar />
             <Switch>
+              <Route exact path='/' component={Login} />
+              <Route exact path='/login' component={Login} />
               <Route exact path='/about' component={About} />
               <Route exact path='/register' component={Register} />
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/today' component={Today} />
-              <Route exact path='/upcoming' component={Upcoming} />
-              <Route exact path='/noplanb' component={Noplanb} />
+              <PrivateRoute exact path='/today' component={Today} />
+              <PrivateRoute exact path='/upcoming' component={Upcoming} />
+              <PrivateRoute exact path='/noplanb' component={Noplanb} />
             </Switch>
           </Fragment>
         </ThemeProvider>

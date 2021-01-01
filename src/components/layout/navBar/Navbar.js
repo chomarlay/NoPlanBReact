@@ -1,25 +1,32 @@
-import React, { useContext, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Nav, NavTitle, NavLink } from './NavStyledComponents/NavStyled';
 import { SideMenu } from './SideMenu';
-import AuthContext from './../../../context/auth/authContext';
+import useAuth from './../../../context/auth/useAuth';
 
-const GuestLinks = () => {
-  return (
-    <Fragment>
-      <NavLink to='/login'>Login</NavLink>
-      <NavLink to='/register'>Register</NavLink>
-    </Fragment>
-  );
-};
-const AuthLinks = () => {
-  return (
-    <Fragment>
-      <NavLink to='#'>Logout</NavLink>
-    </Fragment>
-  );
-};
-const Navbar = () => {
-  const { isAuthenticated } = useContext(AuthContext);
+const Navbar = ({ history }) => {
+  const { isAuthenticated, logout } = useAuth();
+  const onLogout = () => {
+    logout();
+  };
+  const GuestLinks = () => {
+    return (
+      <Fragment>
+        <NavLink to='/login'>Login</NavLink>
+        <NavLink to='/register'>Register</NavLink>
+      </Fragment>
+    );
+  };
+
+  const AuthLinks = () => {
+    return (
+      <Fragment>
+        <NavLink to='#' onClick={onLogout}>
+          Logout
+        </NavLink>
+      </Fragment>
+    );
+  };
+
   return (
     <Nav>
       {isAuthenticated ? (

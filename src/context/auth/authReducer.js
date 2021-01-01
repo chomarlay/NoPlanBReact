@@ -11,17 +11,43 @@ import {
 function authReducer(state, action) {
   switch (action.type) {
     case LOGIN_SUCCESS:
+      localStorage.setItem('token', action.payload.accessToken);
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        token: action.payload.accessToken,
+        error: '',
+      };
+    case USER_LOADED:
       return {
         ...state,
         isAuthenticated: true,
         loading: false,
         user: action.payload,
+        error: '',
+      };
+    case LOGIN_FAIL:
+      return {
+        ...state,
+        isAuthenticated: false,
+        loading: false,
+        error: action.payload,
+        user: { email: '', username: '' },
+        token: null,
+      };
+    case LOGOUT:
+      localStorage.removeItem('token');
+      return {
+        ...state,
+        isAuthenticated: false,
+        loading: false,
+        error: '',
+        user: { email: '', password: '' },
+        token: null,
       };
     case REGISTER_SUCCESS:
     case REGISTER_FAIL:
-    case LOGIN_FAIL:
-    case LOGOUT:
-    case USER_LOADED:
     case AUTH_ERROR:
       return {
         state,

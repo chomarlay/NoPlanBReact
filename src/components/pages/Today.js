@@ -1,15 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Container, Title } from '../../GlobalStyles';
-import AuthContext from '../../context/auth/authContext';
+import useAuth from '../../context/auth/useAuth';
 
 const Today = () => {
-  const { user } = useContext(AuthContext);
-  const { email, password } = user;
-
+  const { isAuthenticated, user } = useAuth();
+  const { email, username } = user;
   return (
     <Container>
       <Title>
-        Today tasks for {email} - {password}{' '}
+        Today tasks - {email} - {username} -
+        {isAuthenticated ? 'logged in' : 'not logged in'}
       </Title>
     </Container>
   );

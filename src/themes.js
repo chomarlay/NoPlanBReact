@@ -5,6 +5,7 @@ export const believeTheme = {
   altBackgroundColor: '#cc6600',
   altTextColor: '#fff',
   altPrimary: '#fff',
+  error: '#ff0000',
 };
 
 export const effortTheme = {
@@ -14,6 +15,7 @@ export const effortTheme = {
   altBackgroundColor: '#003699',
   altTextColor: '#fff',
   altPrimary: '#fff',
+  error: '#ff0000',
 };
 
 export const actionTheme = {
@@ -23,6 +25,7 @@ export const actionTheme = {
   altBackgroundColor: '#cc6600',
   altTextColor: '#ffffff',
   altPrimary: '#ffffff',
+  error: '#ff0000',
 };
 
 export const resultTheme = {
@@ -32,4 +35,5 @@ export const resultTheme = {
   altBackgroundColor: '#cc6600',
   altTextColor: '#ffffff',
   altPrimary: '#ffffff',
+  error: '#ff0000',
 };

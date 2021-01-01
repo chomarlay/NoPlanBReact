@@ -1,14 +1,24 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import AuthContext from './../../context/auth/authContext';
 import {
   StyledH1,
+  ErrorText,
   FormContainer,
   FormFieldGroup,
   SubmitButton,
 } from '../../GlobalStyles';
 
 const Login = (props) => {
-  const { login } = useContext(AuthContext);
+  const { isAuthenticated, user, error, login } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push('/today');
+    }
+    if (error) {
+      console.log(error);
+    }
+  }, [isAuthenticated, user, error, props.history]);
 
   const [loginDetails, setLoginDetails] = useState({
     email: '',
@@ -20,7 +30,6 @@ const Login = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     login({ email, password });
-    props.history.push('/today');
   };
 
   const onChange = (e) => {
@@ -28,6 +37,7 @@ const Login = (props) => {
   };
   return (
     <FormContainer>
+      {error ? <ErrorText> {error} </ErrorText> : ''}
       <StyledH1>Account Login</StyledH1>
       <form onSubmit={onSubmit}>
         <FormFieldGroup>

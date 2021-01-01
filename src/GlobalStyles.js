@@ -23,6 +23,11 @@ export const Title = styled.h1`
   text-align: left;
 `;
 
+export const ErrorText = styled.h3`
+  color: ${(props) => props.theme.error};
+  font-size: 1.2rem;
+  text-align: left;
+`;
 export const Container = styled.div`
   z-index: 0;
   width: 100%;
