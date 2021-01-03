@@ -12,11 +12,8 @@ const Login = (props) => {
   const { isAuthenticated, user, error, login } = useContext(AuthContext);
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticated && user) {
       props.history.push('/today');
-    }
-    if (error) {
-      console.log(error);
     }
   }, [isAuthenticated, user, error, props.history]);
 

@@ -17,7 +17,7 @@ const AuthState = (props) => {
   const initialState = {
     isAuthenticated: false,
     loading: true,
-    user: { email: '', username: '' },
+    user: null,
     error: '',
   };
 
@@ -50,9 +50,29 @@ const AuthState = (props) => {
   };
 
   // Register
-  const register = (formData) => {
-    // TODO - Call backend API
-    dispatch({ type: REGISTER_SUCCESS, payload: formData });
+  const register = async (formData) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    try {
+      const res = await axios.post(
+        'http://localhost:9090/signup',
+        formData,
+        config
+      );
+      console.log(res.data);
+      dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+      // loadUser();
+    } catch (err) {
+      dispatch({
+        type: REGISTER_FAIL,
+        payload: err.response
+          ? err.response.data.message
+          : 'Server not available!!!',
+      });
+    }
   };
 
   // Logout
@@ -65,21 +85,7 @@ const AuthState = (props) => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
-    // if (localStorage.token) {
-    //   // set token in axios global header
-    //   console.log('set token in axios header');
-    //   axios.defaults.headers.common['x-auth-token'] = localStorage.token;
-    // } else {
-    //   delete axios.defaults.headers.common['x-auth-token'];
-    // }
     console.log(localStorage.token);
-    // const config = {
-    //   headers: {
-    //     // 'Content-Type': 'application/json',
-    //     'x-auth-token': localStorage.token,
-    //     'access-control-Allow-Origin': '*',
-    //   },
-    // };
     try {
       const res = await axios.get('http://localhost:9090/auth');
       console.log(res.data);
