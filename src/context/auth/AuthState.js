@@ -64,7 +64,7 @@ const AuthState = (props) => {
       );
       console.log(res.data);
       dispatch({ type: REGISTER_SUCCESS, payload: res.data });
-      // loadUser();
+      loadUser();
     } catch (err) {
       dispatch({
         type: REGISTER_FAIL,
