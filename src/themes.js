@@ -6,6 +6,8 @@ export const believeTheme = {
   altTextColor: '#fff',
   altPrimary: '#fff',
   error: '#ff0000',
+  warning: '#993300',
+  info: '#0000cc',
 };
 
 export const effortTheme = {
@@ -16,6 +18,8 @@ export const effortTheme = {
   altTextColor: '#fff',
   altPrimary: '#fff',
   error: '#ff0000',
+  warning: '#993300',
+  info: '#0000cc',
 };
 
 export const actionTheme = {
@@ -26,6 +30,8 @@ export const actionTheme = {
   altTextColor: '#ffffff',
   altPrimary: '#ffffff',
   error: '#ff0000',
+  warning: '#993300',
+  info: '#0000cc',
 };
 
 export const resultTheme = {
@@ -36,4 +42,6 @@ export const resultTheme = {
   altTextColor: '#ffffff',
   altPrimary: '#ffffff',
   error: '#ff0000',
+  warning: '#993300',
+  info: '#0000cc',
 };

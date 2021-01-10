@@ -4,12 +4,12 @@ import AlertReducer from './AlertReducer';
 import { INSERT_ALERT } from './AlertTypes';
 
 const AlertState = (props) => {
-  const initialState = [];
+  const initialState = { message: '', type: '' };
   const [state, dispatch] = useReducer(AlertReducer, initialState);
   const [stateW, setstate] = useState({ warn: '' });
 
   const alertError = (message) => {
-    dispatch(INSERT_ALERT, message);
+    dispatch({ type: INSERT_ALERT, payload: message });
   };
 
   const alertWarning = (message) => {
@@ -18,7 +18,12 @@ const AlertState = (props) => {
 
   return (
     <AlertContext.Provider
-      value={{ message: state.message, alertError, warn: stateW, alertWarning }}
+      value={{
+        message: state.message,
+        alertError,
+        warn: stateW.warn,
+        alertWarning,
+      }}
     >
       {props.children}
     </AlertContext.Provider>

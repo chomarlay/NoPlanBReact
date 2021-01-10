@@ -12,27 +12,32 @@ import GlobalStyle from './GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import { believeTheme } from './themes';
 import AuthState from './context/auth/AuthState';
+import AlertState from './context/alert/AlertState';
+import Alert from './components/layout/alert/Alert';
 
 const App = () => {
   return (
     <AuthState>
-      <Router>
-        <ThemeProvider theme={believeTheme}>
-          <Fragment>
-            <GlobalStyle />
-            <Navbar />
-            <Switch>
-              <Route exact path='/' component={Login} />
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/about' component={About} />
-              <Route exact path='/register' component={Register} />
-              <PrivateRoute exact path='/today' component={Today} />
-              <PrivateRoute exact path='/upcoming' component={Upcoming} />
-              <PrivateRoute exact path='/noplanb' component={Noplanb} />
-            </Switch>
-          </Fragment>
-        </ThemeProvider>
-      </Router>
+      <AlertState>
+        <Router>
+          <ThemeProvider theme={believeTheme}>
+            <Fragment>
+              <GlobalStyle />
+              <Navbar />
+              <Alert />
+              <Switch>
+                <Route exact path='/' component={Login} />
+                <Route exact path='/login' component={Login} />
+                <Route exact path='/about' component={About} />
+                <Route exact path='/register' component={Register} />
+                <PrivateRoute exact path='/today' component={Today} />
+                <PrivateRoute exact path='/upcoming' component={Upcoming} />
+                <PrivateRoute exact path='/noplanb' component={Noplanb} />
+              </Switch>
+            </Fragment>
+          </ThemeProvider>
+        </Router>
+      </AlertState>
     </AuthState>
   );
 };
