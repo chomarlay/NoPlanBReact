@@ -23,6 +23,5 @@ export const WarningAlertText = styled.h3`
 export const InfoAlertText = styled.h3`
   color: ${(props) => props.theme.info};
   font-size: 1.2rem;
-  /* font-weight: bold; */
   text-align: left;
 `;

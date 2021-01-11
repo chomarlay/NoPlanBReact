@@ -5,7 +5,8 @@ const AlertReducer = (state, action) => {
     case INSERT_ALERT:
       return {
         ...state,
-        message: action.payload,
+        message: action.payload.message,
+        alertType: action.payload.alertType,
       };
 
     default:

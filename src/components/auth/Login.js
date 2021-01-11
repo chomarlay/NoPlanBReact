@@ -3,7 +3,6 @@ import useAuth from './../../context/auth/useAuth';
 import useAlert from './../../context/alert/useAlert';
 import {
   StyledH1,
-  ErrorText,
   FormContainer,
   FormFieldGroup,
   SubmitButton,
@@ -40,7 +39,6 @@ const Login = (props) => {
   };
   return (
     <FormContainer>
-      {error ? <ErrorText> {error} </ErrorText> : ''}
       <StyledH1>Account Login</StyledH1>
       <form onSubmit={onSubmit}>
         <FormFieldGroup>

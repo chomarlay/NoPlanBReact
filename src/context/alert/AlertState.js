@@ -1,28 +1,33 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
 import AlertContext from './AlertContext';
 import AlertReducer from './AlertReducer';
-import { INSERT_ALERT } from './AlertTypes';
+import { INSERT_ALERT, ALERT_ERROR, ALERT_INFO } from './AlertTypes';
 
 const AlertState = (props) => {
-  const initialState = { message: '', type: '' };
+  const initialState = { message: '', alertType: '' };
   const [state, dispatch] = useReducer(AlertReducer, initialState);
-  const [stateW, setstate] = useState({ warn: '' });
 
-  const alertError = (message) => {
-    dispatch({ type: INSERT_ALERT, payload: message });
+  const alertError = (msg) => {
+    dispatch({
+      type: INSERT_ALERT,
+      payload: { message: msg, alertType: ALERT_ERROR },
+    });
   };
 
-  const alertWarning = (message) => {
-    setstate({ ...stateW, warn: message });
+  const alertInfo = (msg) => {
+    dispatch({
+      type: INSERT_ALERT,
+      payload: { message: msg, alertType: ALERT_INFO },
+    });
   };
 
   return (
     <AlertContext.Provider
       value={{
         message: state.message,
+        alertType: state.alertType,
         alertError,
-        warn: stateW.warn,
-        alertWarning,
+        alertInfo,
       }}
     >
       {props.children}
