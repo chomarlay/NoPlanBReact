@@ -11,6 +11,7 @@ import {
   LOGOUT,
   USER_LOADED,
   AUTH_ERROR,
+  CLEAR_ERROR,
 } from './AuthTypes';
 
 const AuthState = (props) => {
@@ -80,6 +81,11 @@ const AuthState = (props) => {
     dispatch({ type: LOGOUT });
   };
 
+  // Logout
+  const clearError = () => {
+    dispatch({ type: CLEAR_ERROR });
+  };
+
   // load user
   const loadUser = async () => {
     if (localStorage.token) {
@@ -110,6 +116,7 @@ const AuthState = (props) => {
         login,
         register,
         logout,
+        clearError,
       }}
     >
       {props.children}

@@ -1,4 +1,4 @@
-import { INSERT_ALERT } from './AlertTypes';
+import { INSERT_ALERT, REMOVE_ALERT } from './AlertTypes';
 
 const AlertReducer = (state, action) => {
   switch (action.type) {
@@ -7,6 +7,12 @@ const AlertReducer = (state, action) => {
         ...state,
         message: action.payload.message,
         alertType: action.payload.alertType,
+      };
+    case REMOVE_ALERT:
+      return {
+        ...state,
+        message: '',
+        alertType: '',
       };
 
     default:

@@ -6,6 +6,7 @@ import {
   LOGOUT,
   USER_LOADED,
   AUTH_ERROR,
+  CLEAR_ERROR,
 } from './AuthTypes';
 
 function authReducer(state, action) {
@@ -48,6 +49,11 @@ function authReducer(state, action) {
         error: '',
         user: null,
         token: null,
+      };
+    case CLEAR_ERROR:
+      return {
+        ...state,
+        error: '',
       };
     default:
       return { state };

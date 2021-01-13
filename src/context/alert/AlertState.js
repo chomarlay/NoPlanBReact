@@ -1,7 +1,12 @@
 import React, { useReducer } from 'react';
 import AlertContext from './AlertContext';
 import AlertReducer from './AlertReducer';
-import { INSERT_ALERT, ALERT_ERROR, ALERT_INFO } from './AlertTypes';
+import {
+  INSERT_ALERT,
+  ALERT_ERROR,
+  ALERT_INFO,
+  REMOVE_ALERT,
+} from './AlertTypes';
 
 const AlertState = (props) => {
   const initialState = { message: '', alertType: '' };
@@ -12,6 +17,8 @@ const AlertState = (props) => {
       type: INSERT_ALERT,
       payload: { message: msg, alertType: ALERT_ERROR },
     });
+
+    setTimeout(() => dispatch({ type: REMOVE_ALERT }), 3000);
   };
 
   const alertInfo = (msg) => {

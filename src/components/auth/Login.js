@@ -9,7 +9,7 @@ import {
 } from '../../GlobalStyles';
 
 const Login = (props) => {
-  const { isAuthenticated, user, error, login } = useAuth();
+  const { isAuthenticated, user, error, clearError, login } = useAuth();
   const { alertError } = useAlert();
 
   useEffect(() => {
@@ -18,6 +18,7 @@ const Login = (props) => {
     }
     if (error !== '') {
       alertError(error);
+      clearError();
     }
     // eslint-disable-next-line
   }, [isAuthenticated, user, error, props.history]);
