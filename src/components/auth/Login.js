@@ -5,6 +5,8 @@ import {
   StyledH1,
   FormContainer,
   FormFieldGroup,
+  FormFieldLabel,
+  FormFieldInput,
   SubmitButton,
 } from '../../GlobalStyles';
 
@@ -32,7 +34,11 @@ const Login = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    login({ email, password });
+    if (email === '' || password === '') {
+      alertError('Please enter both email and password');
+    } else {
+      login({ email, password });
+    }
   };
 
   const onChange = (e) => {
@@ -43,12 +49,17 @@ const Login = (props) => {
       <StyledH1>Account Login</StyledH1>
       <form onSubmit={onSubmit}>
         <FormFieldGroup>
-          <label htmlFor='email'>Email Address</label>
-          <input type='email' name='email' value={email} onChange={onChange} />
+          <FormFieldLabel htmlFor='email'>Email Address</FormFieldLabel>
+          <FormFieldInput
+            type='email'
+            name='email'
+            value={email}
+            onChange={onChange}
+          />
         </FormFieldGroup>
         <FormFieldGroup>
-          <label htmlFor='password'>Password</label>
-          <input
+          <FormFieldLabel htmlFor='password'>Password</FormFieldLabel>
+          <FormFieldInput
             type='password'
             name='password'
             value={password}

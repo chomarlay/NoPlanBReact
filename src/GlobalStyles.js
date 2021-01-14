@@ -47,39 +47,40 @@ export const FormContainer = styled.div`
 
 export const FormFieldGroup = styled.div`
   margin: 1rem 0;
-  label {
+  /* label {
     margin: 0.2rem 0;
     font-size: 1.2rem;
     width: 100%;
     color: ${(props) => props.theme.textColor};
   }
+
   input {
     display: block;
     width: 100%;
     padding: 0.4rem;
-    font-size: 1.2rem;
+    font-size: 2.2rem;
     border: 2px solid #ccc;
     margin-top: 0.5rem;
     color: ${(props) => props.theme.textColor};
-  }
+  } */
 `;
 
-// export const FormFieldLabel = styled.text`
-//     margin: 0.2rem 0;
-//     font-size: 1.2rem;
-//     width: 90%;
-//     color: ${(props)=> props.theme.textColor};
-// `;
+export const FormFieldLabel = styled.text`
+  margin: 0.2rem 0;
+  font-size: 1.2rem;
+  width: 100%;
+  color: ${(props) => props.theme.textColor};
+`;
 
-// export const FormFieldInput = styled.input`
-//     display: block;
-//     width: 100%;
-//     padding: 0.4rem;
-//     font-size: 1.2rem;
-//     border:2px solid #ccc;
-//     margin-top: 0.5rem;
-//     color: ${(props)=> props.theme.textColor};
-// `;
+export const FormFieldInput = styled.input`
+  display: block;
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border: 2px solid #ccc;
+  margin-top: 0.5rem;
+  color: ${(props) => props.theme.textColor};
+`;
 // @media screen and (max-width: 991px) {
 //     padding-right: 30px;
 //     padding-left: 30px;
