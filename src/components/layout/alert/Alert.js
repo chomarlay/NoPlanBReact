@@ -4,19 +4,18 @@ import useAlert from './../../../context/alert/useAlert';
 import { ALERT_ERROR } from './../../../context/alert/AlertTypes';
 
 const Alert = () => {
-  const { message, alertType } = useAlert();
+  const { alerts } = useAlert();
   return (
-    <AlertContainer>
-      {message ? (
-        alertType === ALERT_ERROR ? (
-          <ErrorAlertText>{message}</ErrorAlertText>
+    alerts.length > 0 &&
+    alerts.map((alert) => (
+      <AlertContainer>
+        {alert.alertType === ALERT_ERROR ? (
+          <ErrorAlertText>{alert.message}</ErrorAlertText>
         ) : (
-          <InfoAlertText>{message}</InfoAlertText>
-        )
-      ) : (
-        ''
-      )}
-    </AlertContainer>
+          <InfoAlertText>{alert.message}</InfoAlertText>
+        )}
+      </AlertContainer>
+    ))
   );
 };
 export default Alert;
