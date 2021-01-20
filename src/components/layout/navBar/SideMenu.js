@@ -25,6 +25,10 @@ export const SideMenu = () => {
             <BoxIcons.BiCalendar />
             Upcoming
           </NavLink>
+          <NavLink to='/projects'>
+            <BoxIcons.BiCalendar />
+            Projects
+          </NavLink>
         </SideNav>
       ) : (
         ''
