@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { NavSideMenu, SideNav, NavLink } from './NavStyledComponents/NavStyled';
 import * as FaIcons from 'react-icons/fa';
 import * as BoxIcons from 'react-icons/bi';
+import * as FcIcons from 'react-icons/fc';
 
 export const SideMenu = () => {
   const [sideMenu, setSideMenu] = useState(false);
@@ -26,7 +27,7 @@ export const SideMenu = () => {
             Upcoming
           </NavLink>
           <NavLink to='/projects'>
-            <BoxIcons.BiCalendar />
+            <FcIcons.FcTodoList />
             Projects
           </NavLink>
         </SideNav>

@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -11,7 +12,14 @@ body {
     background-color:${(props) => props.theme.backgroundColor};
 }
 `;
-
+export const ButtonLink = styled(Link)`
+  color: ${(props) => props.theme.Primary};
+  font-size: 1.2rem;
+  text-justify: right;
+  text-decoration: none;
+  padding: 0.45rem;
+  margin: 0 0.25rem;
+`;
 export const StyledH1 = styled.h1`
   color: ${(props) => props.theme.primary};
   text-align: center;
@@ -31,11 +39,32 @@ export const ErrorText = styled.h3`
 export const Container = styled.div`
   z-index: 0;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1500px;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 20px;
-  padding-left: 100px;
+  padding-right: 10px;
+  padding-left: 10px;
+`;
+
+export const ItemContainer = styled.div`
+  z-index: 0;
+  width: 100%;
+  max-width: 1500px;
+  margin-right: auto;
+  margin-left: auto;
+  margin: 1rem auto;
+  padding: 5px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 10fr 1fr 1fr;
+  grid-template-rows: 20px 20px;
+  grid-gap: 5px;
+`;
+
+export const Item = styled.div`
+  display: flex;
+  padding: 0.5rem;
 `;
 
 export const FormContainer = styled.div`
@@ -65,7 +94,7 @@ export const FormFieldGroup = styled.div`
   } */
 `;
 
-export const FormFieldLabel = styled.text`
+export const FormFieldLabel = styled.label`
   margin: 0.2rem 0;
   font-size: 1.2rem;
   width: 100%;

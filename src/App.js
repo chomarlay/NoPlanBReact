@@ -2,11 +2,13 @@ import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import About from './components/pages/About';
 import Login from './components/auth/Login';
+import Register from './components/auth/Register';
 import Today from './components/pages/Today';
 import Noplanb from './components/pages/Noplanb';
 import Upcoming from './components/pages/Upcoming';
 import Projects from './components/pages/Projects';
-import Register from './components/auth/Register';
+import Project from './components/Projects/ProjectForm';
+
 import Navbar from './components/layout/navBar/Navbar';
 import PrivateRoute from './components/routing/PrivateRoute';
 import GlobalStyle from './GlobalStyles';
@@ -37,6 +39,7 @@ const App = () => {
                   <PrivateRoute exact path='/upcoming' component={Upcoming} />
                   <PrivateRoute exact path='/noplanb' component={Noplanb} />
                   <PrivateRoute exact path='/projects' component={Projects} />
+                  <PrivateRoute exact path='/project' component={Project} />
                 </Switch>
               </Fragment>
             </ThemeProvider>

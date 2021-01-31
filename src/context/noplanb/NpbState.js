@@ -13,11 +13,11 @@ import axios from 'axios';
 
 const NpbState = (props) => {
   const initialState = {
-    todayList: null,
-    noPlanBList: null,
-    upComingList: null,
+    todayList: '',
+    noPlanBList: '',
+    upComingList: '',
     projdcts: null,
-    error: null,
+    error: '',
   };
   const [state, dispatch] = useReducer(NpbReducer, initialState);
 
@@ -67,7 +67,7 @@ const NpbState = (props) => {
     };
     try {
       const res = await axios.get('http://localhost:9090/projects', config);
-      console.log(`Found : ${res.data.length}`);
+      console.log(`Found ::: ${res.data.length}`);
       console.log(res.data.map((r) => r.title));
       dispatch({
         type: GET_PROJECTS,

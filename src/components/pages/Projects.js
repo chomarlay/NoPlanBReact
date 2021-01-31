@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { Container, Title } from '../../GlobalStyles';
 import useAuth from '../../context/auth/useAuth';
 import useNpb from '../../context/noplanb/useNpb';
+import ProjectItem from '../Projects/ProjectItem';
+import { ButtonLink } from '../../GlobalStyles';
 
 const Projects = () => {
   const { isAuthenticated } = useAuth();
@@ -9,7 +11,7 @@ const Projects = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      console.log('Retrieve Projects.. ');
+      console.log(`Retrieve Projects.. `);
       getProjects();
     }
     // eslint-disable-next-line
@@ -18,7 +20,14 @@ const Projects = () => {
   return (
     <Container>
       <Title>Projects</Title>
-      <div>{projects.map((p) => p.title)}</div>
+      <ButtonLink to='/Project'>+ Add</ButtonLink>
+      {projects != null ? (
+        projects.map((project) => (
+          <ProjectItem key={project.id} project={project} />
+        ))
+      ) : (
+        <div>No projects</div>
+      )}
     </Container>
   );
 };
