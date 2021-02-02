@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Title } from '../../GlobalStyles';
 import useAuth from '../../context/auth/useAuth';
 import useNpb from '../../context/noplanb/useNpb';
 import ProjectItem from '../Projects/ProjectItem';
-import { ButtonLink } from '../../GlobalStyles';
+import { ButtonLink, Button } from '../../GlobalStyles';
+import ProjectForm from '../Projects/ProjectForm';
 
 const Projects = () => {
   const { isAuthenticated } = useAuth();
   const { projects, getProjects } = useNpb();
+  const [showProjectForm, setShowProjectForm] = useState(false);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -17,10 +19,14 @@ const Projects = () => {
     // eslint-disable-next-line
   }, []);
 
+  const addProject = () => {
+    setShowProjectForm(!showProjectForm);
+  };
   return (
     <Container>
       <Title>Projects</Title>
-      <ButtonLink to='/Project'>+ Add</ButtonLink>
+      <Button onClick={addProject}>+ Add</Button>
+      {showProjectForm ? <ProjectForm /> : ''}
       {projects != null ? (
         projects.map((project) => (
           <ProjectItem key={project.id} project={project} />

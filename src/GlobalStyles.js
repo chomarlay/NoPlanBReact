@@ -20,6 +20,41 @@ export const ButtonLink = styled(Link)`
   padding: 0.45rem;
   margin: 0 0.25rem;
 `;
+export const SubmitButton = styled.input.attrs({ type: 'submit' })`
+  color: ${(props) => props.theme.altPrimary};
+  background-color: ${(props) => props.theme.altBackgroundColor};
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 1rem;
+  margin-top: 1rem;
+`;
+export const Button = styled.button`
+  color: ${(props) => props.theme.altPrimary};
+  background-color: ${(props) => props.theme.altBackgroundColor};
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 1rem;
+  margin-top: 1rem;
+`;
+
+export const ButtonGroup = styled.div`
+  z-index: 0;
+  width: 30%;
+  /* max-width: 1500px; */
+  margin-right: auto;
+  margin-left: auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 70px 70px;
+  grid-gap: 5px;
+`;
 export const StyledH1 = styled.h1`
   color: ${(props) => props.theme.primary};
   text-align: center;
@@ -27,7 +62,7 @@ export const StyledH1 = styled.h1`
 
 export const Title = styled.h1`
   color: ${(props) => props.theme.primary};
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-align: left;
 `;
 
@@ -71,7 +106,18 @@ export const FormContainer = styled.div`
   max-width: 500px;
   margin: 0.5rem auto;
   overflow: hidden;
-  padding: 0 2rem;
+  padding: 2rem;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+`;
+
+export const ItemFormContainer = styled.div`
+  max-width: 1000px;
+  margin: 0.5rem auto;
+  overflow: hidden;
+  padding: 2rem;
+  border-radius: 5px;
+  border: 2px solid #ccc;
 `;
 
 export const FormFieldGroup = styled.div`
@@ -114,17 +160,5 @@ export const FormFieldInput = styled.input`
 //     padding-right: 30px;
 //     padding-left: 30px;
 // }
-
-export const SubmitButton = styled.input.attrs({ type: 'submit' })`
-  color: ${(props) => props.theme.altPrimary};
-  background-color: ${(props) => props.theme.altBackgroundColor};
-  outline: none;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 1.2rem;
-  padding: 1rem;
-  margin-top: 1rem;
-`;
 
 export default GlobalStyle;
