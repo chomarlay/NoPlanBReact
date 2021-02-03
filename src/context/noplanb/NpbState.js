@@ -16,7 +16,8 @@ const NpbState = (props) => {
     todayList: '',
     noPlanBList: '',
     upComingList: '',
-    projdcts: null,
+    projects: null,
+    currentProject: null,
     error: '',
   };
   const [state, dispatch] = useReducer(NpbReducer, initialState);
@@ -84,10 +85,15 @@ const NpbState = (props) => {
     }
   };
 
+  const createProject = (project) => {
+    console.log('create Project :: ' + project.title);
+  };
+
   // clear error
   const clearError = () => {
     dispatch({ type: CLEAR_ERROR });
   };
+
   return (
     <NpbContext.Provider
       value={{
@@ -95,11 +101,13 @@ const NpbState = (props) => {
         noPlanBList: state.noPlanBList,
         upComingList: state.upComingList,
         projects: state.projects,
+        currentProject: state.currentProject,
         error: state.error,
         getTodayList,
         getNoPlanBList,
         getUpComingList,
         getProjects,
+        createProject,
         clearError,
       }}
     >

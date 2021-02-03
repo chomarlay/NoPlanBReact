@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Title,
   ItemFormContainer,
@@ -9,12 +9,29 @@ import {
   SubmitButton,
   Button,
 } from '../../GlobalStyles';
+import useNpb from '../../context/noplanb/useNpb';
 
 const ProjectForm = () => {
+  const { createProject } = useNpb();
+  const initialState = { title: '' };
+  const [project, setProject] = useState(initialState);
+
+  const onCancel = (e) => {
+    e.preventDefault();
+    console.log('Exit add project');
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log('save add project');
+    setProject({ title: '180 Days Challenge' });
+    createProject(project);
+  };
+
   return (
     <ItemFormContainer>
       <Title>Add Project</Title>
-      <form>
+      <form onSubmit={onSubmit}>
         <FormFieldGroup>
           <FormFieldLabel>Title</FormFieldLabel>
           <FormFieldInput />
@@ -25,7 +42,7 @@ const ProjectForm = () => {
         </FormFieldGroup>
         <ButtonGroup>
           <SubmitButton value='Save' />
-          <Button>Cancel</Button>
+          <Button onClick={onCancel}>Cancel</Button>
         </ButtonGroup>
       </form>
     </ItemFormContainer>
