@@ -13,7 +13,7 @@ import useNpb from '../../context/noplanb/useNpb';
 
 const ProjectForm = () => {
   const { createProject } = useNpb();
-  const initialState = { title: '' };
+  const initialState = { title: '180 Days Challenge' };
   const [project, setProject] = useState(initialState);
 
   const onCancel = (e) => {
@@ -24,7 +24,6 @@ const ProjectForm = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log('save add project');
-    setProject({ title: '180 Days Challenge' });
     createProject(project);
   };
 

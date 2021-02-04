@@ -8,6 +8,8 @@ import {
   GET_PROJECTS,
   SET_ERROR,
   CLEAR_ERROR,
+  CREATE_PROJECT,
+  TOGGLE_PROJECT_FORM,
 } from './NpbTypes';
 import axios from 'axios';
 
@@ -18,6 +20,7 @@ const NpbState = (props) => {
     upComingList: '',
     projects: null,
     currentProject: null,
+    showProjectForm: false,
     error: '',
   };
   const [state, dispatch] = useReducer(NpbReducer, initialState);
@@ -87,6 +90,7 @@ const NpbState = (props) => {
 
   const createProject = (project) => {
     console.log('create Project :: ' + project.title);
+    dispatch({ type: CREATE_PROJECT, payload: project });
   };
 
   // clear error
@@ -94,6 +98,9 @@ const NpbState = (props) => {
     dispatch({ type: CLEAR_ERROR });
   };
 
+  const toggleProjectForm = (show) => {
+    dispatch({ type: TOGGLE_PROJECT_FORM, payload: show });
+  };
   return (
     <NpbContext.Provider
       value={{
@@ -102,12 +109,14 @@ const NpbState = (props) => {
         upComingList: state.upComingList,
         projects: state.projects,
         currentProject: state.currentProject,
+        showProjectForm: state.showProjectForm,
         error: state.error,
         getTodayList,
         getNoPlanBList,
         getUpComingList,
         getProjects,
         createProject,
+        toggleProjectForm,
         clearError,
       }}
     >

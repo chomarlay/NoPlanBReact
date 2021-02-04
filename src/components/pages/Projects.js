@@ -8,8 +8,12 @@ import ProjectForm from '../Projects/ProjectForm';
 
 const Projects = () => {
   const { isAuthenticated } = useAuth();
-  const { projects, getProjects } = useNpb();
-  const [showProjectForm, setShowProjectForm] = useState(false);
+  const {
+    projects,
+    getProjects,
+    showProjectForm,
+    toggleProjectForm,
+  } = useNpb();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -20,7 +24,7 @@ const Projects = () => {
   }, []);
 
   const addProject = () => {
-    setShowProjectForm(!showProjectForm);
+    toggleProjectForm(!showProjectForm);
   };
   return (
     <Container>

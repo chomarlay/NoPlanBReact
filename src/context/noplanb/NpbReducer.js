@@ -6,6 +6,7 @@ import {
   SET_ERROR,
   CLEAR_ERROR,
   CREATE_PROJECT,
+  TOGGLE_PROJECT_FORM,
 } from './NpbTypes';
 
 const NpbReducer = (state, action) => {
@@ -19,11 +20,18 @@ const NpbReducer = (state, action) => {
     case GET_PROJECTS:
       return { ...state, projects: action.payload, error: null };
     case CREATE_PROJECT:
-      return { ...state, currentProject: action.payload, error: null };
+      return {
+        ...state,
+        currentProject: action.payload,
+        error: null,
+        showProjectForm: false,
+      };
     case SET_ERROR:
       return { ...state, error: action.payload };
     case CLEAR_ERROR:
       return { ...state, error: null };
+    case TOGGLE_PROJECT_FORM:
+      return { ...state, showProjectForm: action.payload };
     default:
       return state;
   }
