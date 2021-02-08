@@ -12,32 +12,45 @@ import {
 import useNpb from '../../context/noplanb/useNpb';
 
 const ProjectForm = () => {
-  const { createProject } = useNpb();
-  const initialState = { title: '180 Days Challenge' };
-  const [project, setProject] = useState(initialState);
+  const { createProject, toggleProjectForm } = useNpb();
+  const [project, setProject] = useState({ title: '', description: '' });
+  const { title, description } = project;
 
   const onCancel = (e) => {
     e.preventDefault();
     console.log('Exit add project');
+    toggleProjectForm(false);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('save add project');
     createProject(project);
   };
 
+  const onChange = (e) => {
+    setProject({ ...project, [e.target.name]: e.target.value });
+  };
   return (
     <ItemFormContainer>
       <Title>Add Project</Title>
       <form onSubmit={onSubmit}>
-        <FormFieldGroup>
+        <FormFieldGroup Htmlfor=''>
           <FormFieldLabel>Title</FormFieldLabel>
-          <FormFieldInput />
+          <FormFieldInput
+            name='title'
+            type='text'
+            value={title}
+            onChange={onChange}
+          />
         </FormFieldGroup>
         <FormFieldGroup>
-          <FormFieldLabel>Description</FormFieldLabel>
-          <FormFieldInput />
+          <FormFieldLabel HtmlFor='description'>Description</FormFieldLabel>
+          <FormFieldInput
+            name='description'
+            type='text'
+            value={description}
+            onChange={onChange}
+          />
         </FormFieldGroup>
         <ButtonGroup>
           <SubmitButton value='Save' />
