@@ -13,6 +13,7 @@ const Projects = () => {
     getProjects,
     showProjectForm,
     toggleProjectForm,
+    refreshProjects,
   } = useNpb();
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const Projects = () => {
       getProjects();
     }
     // eslint-disable-next-line
-  }, []);
+  }, [refreshProjects]);
 
   const addProject = () => {
     toggleProjectForm(!showProjectForm);

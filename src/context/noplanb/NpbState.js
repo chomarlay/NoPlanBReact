@@ -21,6 +21,7 @@ const NpbState = (props) => {
     projects: null,
     currentProject: null,
     showProjectForm: false,
+    refreshProjects: true,
     error: '',
   };
   const [state, dispatch] = useReducer(NpbReducer, initialState);
@@ -88,9 +89,29 @@ const NpbState = (props) => {
     }
   };
 
-  const createProject = (project) => {
+  const createProject = async (project) => {
     console.log('create Project :: ' + project.title);
-    dispatch({ type: CREATE_PROJECT, payload: project });
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    try {
+      const res = await axios.post(
+        'http://localhost:9090/projects',
+        project,
+        config
+      );
+      dispatch({ type: CREATE_PROJECT, payload: res.data });
+    } catch (err) {
+      console.log('Error saving Projects');
+      dispatch({
+        type: SET_ERROR,
+        payload: err.response
+          ? err.response.data.message
+          : 'Server not responding!',
+      });
+    }
   };
 
   // clear error
@@ -110,6 +131,7 @@ const NpbState = (props) => {
         projects: state.projects,
         currentProject: state.currentProject,
         showProjectForm: state.showProjectForm,
+        refreshProjects: state.refreshProjects,
         error: state.error,
         getTodayList,
         getNoPlanBList,

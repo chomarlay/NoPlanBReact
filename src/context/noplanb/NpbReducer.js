@@ -20,11 +20,13 @@ const NpbReducer = (state, action) => {
     case GET_PROJECTS:
       return { ...state, projects: action.payload, error: null };
     case CREATE_PROJECT:
+      console.log(`create project payload : ${action.payload}`);
       return {
         ...state,
         currentProject: action.payload,
         error: null,
         showProjectForm: false,
+        refreshProjects: true,
       };
     case SET_ERROR:
       return { ...state, error: action.payload };
