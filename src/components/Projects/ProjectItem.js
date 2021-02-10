@@ -6,7 +6,9 @@ import { ButtonLink } from '../../GlobalStyles';
 const ProjectItem = ({ project }) => {
   return (
     <ItemContainer>
-      <Item>{project.title}</Item>
+      <Item>
+        {project.title} - {project.description}
+      </Item>
       <Item>
         <ButtonLink to='/Project'>
           <FcIcons.FcTodoList />

@@ -1,28 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Container, Title } from '../../GlobalStyles';
 import useAuth from '../../context/auth/useAuth';
 import useNpb from '../../context/noplanb/useNpb';
+import useAlert from '../../context/alert/useAlert';
 import ProjectItem from '../Projects/ProjectItem';
-import { ButtonLink, Button } from '../../GlobalStyles';
+import { Button } from '../../GlobalStyles';
 import ProjectForm from '../Projects/ProjectForm';
 
 const Projects = () => {
   const { isAuthenticated } = useAuth();
+  const { alertError } = useAlert();
   const {
     projects,
     getProjects,
     showProjectForm,
     toggleProjectForm,
     refreshProjects,
+    error,
+    clearError,
   } = useNpb();
 
   useEffect(() => {
     if (isAuthenticated) {
-      console.log(`Retrieve Projects.. `);
       getProjects();
     }
+    if (error !== '') {
+      console.log(
+        'AlertAlert.................................' + error + '****'
+      );
+      alertError(error);
+      clearError();
+    }
     // eslint-disable-next-line
-  }, [refreshProjects]);
+  }, [refreshProjects, error]);
 
   const addProject = () => {
     toggleProjectForm(!showProjectForm);

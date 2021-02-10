@@ -10,21 +10,26 @@ import {
   Button,
 } from '../../GlobalStyles';
 import useNpb from '../../context/noplanb/useNpb';
+import useAlert from '../../context/alert/useAlert';
 
 const ProjectForm = () => {
   const { createProject, toggleProjectForm } = useNpb();
+  const { alertError } = useAlert();
   const [project, setProject] = useState({ title: '', description: '' });
   const { title, description } = project;
 
   const onCancel = (e) => {
     e.preventDefault();
-    console.log('Exit add project');
     toggleProjectForm(false);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    createProject(project);
+    if (project.title === '') {
+      alertError('Please enter title');
+    } else {
+      createProject(project);
+    }
   };
 
   const onChange = (e) => {

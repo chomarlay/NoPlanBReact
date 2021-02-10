@@ -21,7 +21,7 @@ const NpbState = (props) => {
     projects: null,
     currentProject: null,
     showProjectForm: false,
-    refreshProjects: true,
+    refreshProjects: false,
     error: '',
   };
   const [state, dispatch] = useReducer(NpbReducer, initialState);

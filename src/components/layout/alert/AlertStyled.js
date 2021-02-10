@@ -5,7 +5,6 @@ export const AlertContainer = styled.div`
   margin: 0.5rem auto;
   overflow: hidden;
   padding: 0 2rem;
-  border: 2px solid #ccc;
 `;
 
 export const ErrorAlertText = styled.h3`
