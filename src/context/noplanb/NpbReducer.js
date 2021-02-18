@@ -32,6 +32,7 @@ const NpbReducer = (state, action) => {
         showProjectForm: false,
         refreshProjects: true,
       };
+
     case SET_ERROR:
       return { ...state, error: action.payload };
     case CLEAR_ERROR:

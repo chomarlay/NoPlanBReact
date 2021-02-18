@@ -9,6 +9,7 @@ import {
   SET_ERROR,
   CLEAR_ERROR,
   CREATE_PROJECT,
+  UPDATE_PROJECT,
   TOGGLE_PROJECT_FORM,
 } from './NpbTypes';
 import axios from 'axios';
@@ -90,7 +91,6 @@ const NpbState = (props) => {
   };
 
   const createProject = async (project) => {
-    console.log('create Project :: ' + project.title);
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -104,7 +104,6 @@ const NpbState = (props) => {
       );
       dispatch({ type: CREATE_PROJECT, payload: res.data });
     } catch (err) {
-      console.log('Error saving Projects');
       dispatch({
         type: SET_ERROR,
         payload: err.response
@@ -112,6 +111,10 @@ const NpbState = (props) => {
           : 'Server not responding!',
       });
     }
+  };
+
+  const updateProject = (project) => {
+    console.log('Updating project...');
   };
 
   // clear error

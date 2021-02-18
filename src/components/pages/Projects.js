@@ -25,9 +25,6 @@ const Projects = () => {
       getProjects();
     }
     if (error !== '') {
-      console.log(
-        'AlertAlert.................................' + error + '****'
-      );
       alertError(error);
       clearError();
     }
