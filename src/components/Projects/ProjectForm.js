@@ -26,7 +26,7 @@ const ProjectForm = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (project.title === '') {
-      alertError('Please enter the Title');
+      alertError('Please enter the Project Title');
     } else {
       createProject(project);
     }
