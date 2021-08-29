@@ -3,6 +3,7 @@ import AuthContext from './authContext';
 import authReducer from './authReducer';
 import axios from 'axios';
 import setAuthToken from './../../utils/setAuthToken';
+import configData from '../../config.json';
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -33,7 +34,7 @@ const AuthState = (props) => {
     };
     try {
       const res = await axios.post(
-        'http://localhost:9090/signin',
+        configData.SERVER_URL + '/signin',
         formData,
         config
       );
@@ -59,7 +60,7 @@ const AuthState = (props) => {
     };
     try {
       const res = await axios.post(
-        'http://localhost:9090/signup',
+        configData.SERVER_URL + '/signup',
         formData,
         config
       );
@@ -93,7 +94,7 @@ const AuthState = (props) => {
     }
     console.log(localStorage.token);
     try {
-      const res = await axios.get('http://localhost:9090/auth');
+      const res = await axios.get(configData.SERVER_URL + '/auth');
       console.log(res.data);
       dispatch({ type: USER_LOADED, payload: res.data });
     } catch (err) {

@@ -1,6 +1,8 @@
 import React, { useReducer } from 'react';
 import NpbContext from './NpbContext';
 import NpbReducer from './NpbReducer';
+import configData from '../../config.json';
+
 import {
   GET_TODAY_LIST,
   GET_NOPLANB_LIST,
@@ -36,7 +38,7 @@ const NpbState = (props) => {
     };
     try {
       const res = await axios.get(
-        'http://localhost:9090/tasks?dueindays=1',
+        configData.SERVER_URL + '/tasks?dueindays=1',
         config
       );
       console.log(`Found : ${res.data.length}`);
@@ -72,7 +74,7 @@ const NpbState = (props) => {
       },
     };
     try {
-      const res = await axios.get('http://localhost:9090/projects', config);
+      const res = await axios.get(configData.SERVER_URL + '/projects', config);
       console.log(`Found ::: ${res.data.length}`);
       console.log(res.data.map((r) => r.title));
       dispatch({
@@ -98,7 +100,7 @@ const NpbState = (props) => {
     };
     try {
       const res = await axios.post(
-        'http://localhost:9090/projects',
+        configData.SERVER_URL + '/projects',
         project,
         config
       );
