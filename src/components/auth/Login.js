@@ -35,7 +35,7 @@ const Login = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (email === '' || password === '') {
-      alertError('Please enter both email and password');
+      alertError('Please enter both email and password.');
     } else {
       login({ email, password });
     }
